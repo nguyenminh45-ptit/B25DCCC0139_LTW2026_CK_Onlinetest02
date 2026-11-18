@@ -1,8 +1,138 @@
+/* Giao diện form Admin (Add Teacher / Add Subject)
+   Phối màu theo trang đăng nhập: nền xanh navy + điểm nhấn cyan #07cfda */
+
 .form-class {
-  background-color: white;
-  padding: 50px 100px;
+  --fc-surface: #0f1826;
+  --fc-field: #16233a;
+  --fc-border: #2a3b55;
+  --fc-text: #e8f1f8;
+  --fc-muted: #8fa3ba;
+  --fc-accent: #07cfda;
+
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 440px;
+  margin: 72px auto 48px;
+  padding: 36px 36px 32px;
+  background: var(--fc-surface);
+  border: 1px solid var(--fc-border);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  color: var(--fc-text);
+  text-align: left;
 }
 
-h2, .linkbtn {
-  color:black
+.form-class h2 {
+  margin: 0 0 28px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--fc-text);
+}
+
+.form-class > div {
+  margin-bottom: 18px;
+}
+
+.form-class label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fc-muted);
+}
+
+.form-class input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--fc-text);
+  background: var(--fc-field);
+  border: 1px solid var(--fc-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-class input:hover {
+  border-color: #3b5272;
+}
+
+.form-class input:focus {
+  border-color: var(--fc-accent);
+  box-shadow: 0 0 0 3px rgba(7, 207, 218, 0.22);
+}
+
+/* Chrome autofill không đổi nền thành màu vàng nhạt */
+.form-class input:-webkit-autofill {
+  -webkit-text-fill-color: var(--fc-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--fc-field) inset;
+  caret-color: var(--fc-text);
+}
+
+/* Nút chính */
+.form-class button {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.form-class button[type="submit"] {
+  margin-top: 8px;
+  padding: 12px 16px;
+  color: #04202a;
+  background: var(--fc-accent);
+  border: 1px solid var(--fc-accent);
+}
+
+.form-class button[type="submit"]:hover {
+  background: #3fe0e9;
+  border-color: #3fe0e9;
+}
+
+/* Nút quay lại (không có type="submit") */
+.form-class button:not([type="submit"]) {
+  margin-top: 10px;
+  padding: 0;
+  color: var(--fc-muted);
+  background: transparent;
+  border: 1px solid var(--fc-border);
+}
+
+.form-class button:not([type="submit"]):hover {
+  color: var(--fc-text);
+  border-color: var(--fc-muted);
+}
+
+.form-class .linkbtn {
+  display: block;
+  padding: 11px 16px;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
+.form-class button:focus-visible {
+  outline: 3px solid rgba(7, 207, 218, 0.5);
+  outline-offset: 2px;
+}
+
+/* Bỏ thẻ <br/> thừa giữa 2 nút */
+.form-class br {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .form-class {
+    margin-top: 40px;
+    padding: 28px 22px 24px;
+  }
 }
