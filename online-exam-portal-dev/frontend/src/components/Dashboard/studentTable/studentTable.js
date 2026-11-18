@@ -44,8 +44,8 @@ class StudentTable extends React.Component {
             return (
               <tr key={key}>
                 <td>{val.name}</td>
-                <td>{val.status.toString()}</td>
-                <td><button onClick={()=>(this.handleStatusChange(val.status,val.id))}>{this.buttonTextBasedOnStatus(val.status)}</button></td>
+                <td><span className={val.status ? "badge badge-on" : "badge badge-off"}>{val.status ? "Active" : "Blocked"}</span></td>
+                <td><button className="row-btn" onClick={()=>(this.handleStatusChange(val.status,val.id))}>{this.buttonTextBasedOnStatus(val.status)}</button></td>
               </tr>
             )
           })}

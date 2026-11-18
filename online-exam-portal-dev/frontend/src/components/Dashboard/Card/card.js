@@ -1,52 +1,38 @@
-import { makeStyles } from "@material-ui/core"
+import React from "react";
+import "../Main/dashboard.css";
 
-const useStyles = makeStyles({
-  card_main:{
-    background:'white',
-    display:'inline-block',
-    padding:'20px 0px 10px 10px',
-    margin:30,
-    borderRadius:10
-  },
-  name:{
-    marginBottom:20,
-    marginLeft:10,
-    fontSize:15,
-    fontWeight:500
-  },
-  d:{
-    display:'flex',
-    color:'darkblue'
-  },
-  d1:{
-    paddingTop:10,
-    fontSize:40,
-    fontWeight:700
-  },
-  d2:{
-    paddingTop:30,
-    fontSize:20,
-    fontWeight:600
-  },
-  img:{
-    marginLeft:30,
-    width:120,
-    height:100
-  }
-})
+// Thẻ thống kê: số đang hoạt động / tổng, thanh tỉ lệ, và khu vực nút bấm (children)
+export const MainCard = ({ title, value = 0, total = 0, icon, selected, children }) => {
+  const active = Number(value) || 0;
+  const all = Number(total) || 0;
+  const blocked = Math.max(all - active, 0);
+  const percent = all > 0 ? Math.round((active / all) * 100) : 0;
 
-export const MainCard = (props)=>{
-  const classes = useStyles();
-  return(
-    <div className={classes.card_main}>
-      <div className={classes.name}>
-        {props.title}
+  return (
+    <section className={"dash-card" + (selected ? " dash-card--selected" : "")}>
+      <div className="dash-card__top">
+        <div>
+          <h2 className="dash-card__title">{title}</h2>
+          <div className="dash-card__count">
+            <span className="dash-card__value">{active}</span>
+            <span className="dash-card__total">/ {all}</span>
+          </div>
+        </div>
+        <div className="dash-card__icon" aria-hidden="true">{icon}</div>
       </div>
-      <div className={classes.d}>
-        <span className={classes.d1}>{props.value}</span>
-        <span className={classes.d2}>/{props.total}</span>
-        <img src={props.image} className={classes.img} alt=''/>
+
+      <div
+        className="dash-card__bar"
+        role="img"
+        aria-label={`${active} active of ${all}`}
+      >
+        <div className="dash-card__bar-fill" style={{ width: percent + "%" }} />
       </div>
-    </div>
-  )
-}
+      <p className="dash-card__note">
+        {active} active · {blocked} blocked
+      </p>
+
+      <div className="dash-card__actions">{children}</div>
+    </section>
+  );
+};

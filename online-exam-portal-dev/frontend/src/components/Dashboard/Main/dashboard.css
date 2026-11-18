@@ -1,0 +1,181 @@
+/* Dashboard admin - cùng tông navy + cyan với trang đăng nhập và form Add Teacher/Subject */
+.dash-page {
+  --d-surface: #0f1826;
+  --d-field: #16233a;
+  --d-border: #2a3b55;
+  --d-text: #e8f1f8;
+  --d-muted: #8fa3ba;
+  --d-accent: #07cfda;
+
+  box-sizing: border-box;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 96px 24px 56px;
+  color: var(--d-text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+/* Tiêu đề trang */
+.dash-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.dash-head__title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.dash-head__sub {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: var(--d-muted);
+}
+
+/* Lưới 3 thẻ */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Thẻ thống kê */
+.dash-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 22px 22px 20px;
+  background: var(--d-surface);
+  border: 1px solid var(--d-border);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.15s;
+}
+.dash-card--selected {
+  border-color: var(--d-accent);
+}
+.dash-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dash-card__title {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--d-muted);
+}
+.dash-card__count {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.dash-card__value {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--d-text);
+}
+.dash-card__total {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--d-muted);
+}
+.dash-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  font-size: 26px;
+  color: var(--d-accent);
+  background: rgba(7, 207, 218, 0.12);
+  border-radius: 12px;
+}
+
+/* Thanh tỉ lệ active / tổng */
+.dash-card__bar {
+  height: 6px;
+  margin-top: 20px;
+  overflow: hidden;
+  background: var(--d-field);
+  border-radius: 999px;
+}
+.dash-card__bar-fill {
+  height: 100%;
+  background: var(--d-accent);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.dash-card__note {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--d-muted);
+}
+
+/* Khu vực nút: luôn nằm sát đáy thẻ để 3 thẻ thẳng hàng */
+.dash-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+/* Nút */
+.dash-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.dash-btn--primary {
+  color: #04202a;
+  background: var(--d-accent);
+  border: 1px solid var(--d-accent);
+}
+.dash-btn--primary:hover {
+  background: #3fe0e9;
+  border-color: #3fe0e9;
+}
+.dash-btn--ghost {
+  color: var(--d-text);
+  background: transparent;
+  border: 1px solid var(--d-border);
+}
+.dash-btn--ghost:hover {
+  border-color: var(--d-muted);
+}
+.dash-btn:focus-visible {
+  outline: 3px solid rgba(7, 207, 218, 0.5);
+  outline-offset: 2px;
+}
+
+/* Bảng danh sách bên dưới */
+.dash-table-wrap {
+  margin-top: 28px;
+}
+
+@media (max-width: 560px) {
+  .dash-page {
+    padding: 88px 16px 40px;
+  }
+  .dash-head {
+    align-items: flex-start;
+  }
+}
